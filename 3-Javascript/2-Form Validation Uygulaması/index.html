@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+    <title>My Task List</title>
+    <style>
+        body {
+            font-size: 180%;
+        }
+
+        #wrapper {
+            width: 700px;
+            margin: 0 auto;
+        }
+
+        input {
+            padding: 15px;
+            font-size: 25px;
+            border-radius: 5px;
+            border: 1px solid grey;
+            width: 490px;
+        }
+
+        label {
+            display: inline-block;
+            width: 170px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #4caf50;
+            padding: 14px 20px;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        #error {
+            color: red;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <div id="error">
+
+
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="email">Email </label>
+            <input type="text" name="email" id="email" placeholder="Mail">
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="phone">Telefon </label>
+            <input type="text" name="phone" id="phone" placeholder="Telefon">
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="password">Parola </label>
+            <input type="text" name="password" id="password" placeholder="Parola">
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="repassword">Parola Tekrar </label>
+            <input type="text" name="repassword" id="repassword" placeholder="Parola tekrar">
+
+        </div>
+
+        <button id="btn">Kaydet</button>
+
+    </div>
+
+
+
+
+    <script>
+
+        $(function () {
+
+
+            /*function isEmail(email) {
+                var pattern = "";
+                return pattern.test(email);
+            }*/
+
+            $("#btn").click(function () {
+
+                var errormessage = "";
+                $("#error").html("");
+
+                if ($("#email").val() == "") {
+                    errormessage += "<p>email alanı zorunlu alan</p>";
+                }
+
+                /*if (isEmail($("#email").val() == false)) {
+                    errormessage += "<p>email alanı düzgün girilmedi</p>"
+                }*/
+
+                if ($("#phone").val() == "") {
+                    errormessage += "<p>telefon alanı zorunlu alan</p>";
+                }
+
+                if ($.isNumeric($("#phone").val())==false) {
+                    errormessage += "<p>telefon alanı düzgün girilmedi</p>";
+                }
+
+                if ($("#password").val() == "") {
+                    errormessage += "<p>password alanı zorunlu alan</p>";
+                }
+
+                if ($("#password").val() != $("#repassword").val()) {
+                    errormessage += "<p>parola alanları eşleşmiyor</p>";
+                }
+
+                if (errormessage != "") {
+                    $("#error").html(errormessage);
+                }
+            })
+
+        })
+
+
+    </script>
+
+
+
+</body>
+
+</html>
